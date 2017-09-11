@@ -126,9 +126,17 @@
 \begin{enumerate}[series=p]
 \item Prove the following sets are Countable (i.e., there is a 1-1 mapping onto the set $\mbJ=\{1,2,3,4,...\}$)
 \benu
-	\item A={-2, -4, -6, -8, ...}
-	\item B={-1, -3, -5, -7,...}
-	\item C={-1, -4, -9, -16, ...}
+	\item A={-2, -4, -6, -8, ...}\\
+	A function $f$ is a 1-1 mapping if $f(p) = f(q) \implies p = q$\\
+	$f(x) = -2x$\\
+	$f(p) = f(q)$, so $-2p = -2q$ and $p = q$.  Hence $f$ is 1-1.
+	\item B={-1, -3, -5, -7,...}\\
+	$f(x) = 2x +1$\\
+	$-2p + 1 = -2q +1$, so $p = q$ and $f$ is 1-1.
+	\item C={-1, -4, -9, -16, ...}\\
+	$f(x) = -(x^2)$\\
+	$-(p^2) = -(q^2)$, so $p^2 = q^2$ and $p = q$ so $f$ is 1-1.  This doesn't feel right . . .
+	
 \eenu
 
 \newpage
@@ -137,23 +145,82 @@
 $A = \{x \in \mcR; 0 < x < 1\}$
 \benu
 	\item $B = \{x \in \mbR; 0 < x < 10\}$
-	\item $C = \{x \in \mbR; −4 < x < −1\}$
+	
+	Two sets are equivalent if they are 1-1 and onto, i.e. bijective.
+	
+	$f(x) = 10x$
+	
+	\benu
+		\item 1-1\\
+			$f(p) = f(q)$\\
+			$10p = 10q$\\
+			$p = q$, so $f$ is 1-1.
+		\item onto\\
+			Given $y \in B$, we can find  $x \in A$ such that $f(x) = y$.  $f(x) = 10x = y$, so $x = \frac{y}{10}$, which is in $A$.  Hence $f$ is onto and $A \sim B$
+	\eenu
+	\item $C = \{x \in \mbR; −4 < x < −1\}$\\
+	$f(x) = 4 - 3x$\\
+	\benu
+		\item 1-1\\
+		$f(p) = f(q)$, so $4-3p = 4 - 3q$, and $p = q$.  Hence $f$ is 1-1.
+		
+		\item onto\\
+		Given a $y \in C$ we can find a $x \in A$ such that $f(x) = y$.\\
+		$f(x) = 4 - 3x = y$, so $x = \frac{4-y}{3}$ which is in $A$, so $f$ is onto.  Hence $A \sim C$.
+	\eenu
 \eenu
 \newpage
 
 \item
 	\benu
-		\item $f: \mbR \to \mbR$ defined by $f(x) = x^2$.  Find $f^{-1}(16)$ and $f^{-1}(U)$, where	$U = [9,16]$.
-		\item $f: \mbR^2 \to \mbR$ defined by $f(x,y) = x^2 + y^2$.  Find $f^{-1}(0)$, $f^{-1}(1)$ and $f^{-1}(U)$, where	$U =(0,4)$.
+		\item $f: \mbR \to \mbR$ defined by $f(x) = x^2$.\\
+			\benu
+				\item Find $f^{-1}(16)$\\
+		
+					$f^{-1}(16) = \{-4,4\}$\\
+							
+				
+				\item $f^{-1}(U)$, where	$U = [9,16]$.\\
+		
+				$f^{-1}(U) = [-4,-3] \cup [3,4]$\\
+			\eenu
+			
+		\item $f: \mbR^2 \to \mbR$ defined by $f(x,y) = x^2 + y^2$.\\  
+			\benu
+				\item Find $f^{-1}(0)$\\
+				
+				$f^{-1}(0) = (0,0)$\\
+				
+				\item $f^{-1}(1)$\\
+					
+				$f^{-1}(1) = (cos(x),sin(y))$ where $x = y$\\
+				
+				
+				\item $f^{-1}(U)$, where	$U =(0,4)$.\\
+					
+				$f^{-1}(U) = 1/2(cos(x),sin(y))$ where $0 \leq x,y \leq \pi/2$
+		\eenu
 	\eenu
 \newpage
 
 \item $f: \mbR \to \mbR$ defined by $f(x) = x^2$ and let $U = (-1,1)$.
 	\benu
-		\item Find $f^{-1}(U)$.
-		\item Find $f(f^{-1}(U))$.  (Notice that $f(f^{-1}(U)) \subseteq U$, but $f(f^{-1}(U)) \neq U)$
+		\item Find $f^{-1}(U)$.\\
+		
+		$f^{-1}(U) = f^{-1}( (-1, 1))$\\
+		$f^{-1}(-1) = i \notin \mbR$\\
+		$f^{-1}(0) = 0 \in \mbR$\\
+		$f^{-1}(1) = 1 \in \mbR$\\
+		$f^{-1}(U) = [0,1) \subset \mbR$ ??\\
+										
+		\item Find $f(f^{-1}(U))$.  (Notice that $f(f^{-1}(U)) \subseteq U$, but $f(f^{-1}(U)) \neq U)$\\
+		
+		$f(f^{-1}(U)) = [0,1)$ ??
 	\eenu
 \newpage
+
+
+
 
 \end{enumerate}
 \end{document}
