@@ -113,6 +113,8 @@
 
 %To turn the answer into problem sets use replace to replace \begin{comment} with \begin{comment} and \\end{comment}  by \end{comment}.
 \newcommand{\lieb}[3][{{}}]{\frac{d^#1 #2}{d\,#3^#1}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
 
 \title{\textbf{Math 351 - Problem Set 1}}
 \author{Guy Matz}
@@ -121,8 +123,9 @@
 \begin{document} 
 
 \maketitle
-%\newpage % Q1
+\newpage % Q1
 
+\section{Finite, Countable, and Uncountable Sets}
 \begin{enumerate}[series=p]
 \item Prove the following sets are Countable (i.e., there is a 1-1 mapping onto the set $\mbJ=\{1,2,3,4,...\}$)
 \benu
@@ -135,7 +138,9 @@
 	$-2p + 1 = -2q +1$, so $p = q$ and $f$ is 1-1.
 	\item C={-1, -4, -9, -16, ...}\\
 	$f(x) = -(x^2)$\\
-	$-(p^2) = -(q^2)$, so $p^2 = q^2$ and $p = q$ so $f$ is 1-1.  This doesn't feel right . . .
+	$-(p^2) = -(q^2)$, so $p^2 = q^2$ and $p = q$ so $f$ is 1-1.
+	
+	My gut is telling me this doesn't feel right . . .
 	
 \eenu
 
@@ -215,11 +220,138 @@ $A = \{x \in \mcR; 0 < x < 1\}$
 										
 		\item Find $f(f^{-1}(U))$.  (Notice that $f(f^{-1}(U)) \subseteq U$, but $f(f^{-1}(U)) \neq U)$\\
 		
-		$f(f^{-1}(U)) = [0,1)$ ??
+		$f(f^{-1}(U)) = f([0,1)) = [0,1)$ ?
 	\eenu
 \newpage
 
 
+
+
+\end{enumerate}
+
+\section{Metric Spaces}
+\begin{enumerate}
+\item  Prove from the definition of a metric space that $\mbR^2$, $d$ is a metric space where
+$$d(p,q) = \abs{p_1 - q_1} + \abs{p_2 - q_2}; p = (p_1, p_2), q = (q_1, q_2)$$
+
+\benu
+	\item Non-negativity\\
+	
+	$d(p,q) = \abs{p_1 - q_1} + \abs{p_2 - q_2}> 0$ when $p \neq q$.  This is true by properties of absolute values.
+	\\
+	\item Identity of Indiscernibles\\
+	\\
+	$d(p,p) = \abs{p_1 - p_1} + \abs{p_2 - p_2} = 0$
+	\\
+	\item Symmetry
+	\begin{align*}
+	d(p,q) &= \abs{p_1 - q_1} + \abs{p_2 - q_2} \\
+	&= \sqrt{(p_1 - q_1)^2} + \sqrt{(p_2 - q_2)^2}\\
+	&= \sqrt{p_1^2 -2p_1q_1 + q_1^2} + \sqrt{(p_2^2 -2p_2q_2 + q_2)^2}\\
+	&= \sqrt{q_1^2 -2q_1p_1 + p_1^2} + \sqrt{(q_2^2 -2q_2p_2 + p_2)^2}\\
+	&= \sqrt{(q_1 - p_1)^2} + \sqrt{(q_2 - p_2)^2}\\
+	&= \abs{q_1 - p_1} + \abs{q_2 - p_2} \\
+	&= d(q,p)
+	\end{align*}
+	
+	\item Triangle Inequality\\
+	\begin{align*}
+	d(p,q) &\leq d(p,r) + d(r,q)\\
+	\abs{p_1 - q_1} + \abs{p_2 - q_2} &\leq \abs{p_1 - r_1} + \abs{p_2 - r_2} + \abs{r_1 - q_1} + \abs{r_2 - q_2}\\
+	\end{align*}
+	
+	We will show for all real numbers that
+	$$\abs{x + y} \leq \abs{x} + \abs{y}$$		
+	\begin{align*}
+	\abs{x + y} &= (x + y)^2 \\
+	&= x^2 +2xy +y^2 \\
+	&= \abs{x}^2 +2xy + \abs{y}^2
+	\end{align*}
+	
+	But for any real number, $w$, $w \leq \abs{w}$; therefore
+	\begin{align*}
+	\abs{x + y}^2 &= \abs{x}^2 +2xy + \abs{y}^2 \\
+	&\leq \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y}^2 \\
+	&= (\abs{x} + \abs{y})^2
+	\end{align*}
+	
+	Taking square roots, we get:
+	$$\abs{x + y} \leq \abs{x} + \abs{y}$$
+	Now we let $x = \abs{p_1 - r_1} + \abs{p_2 - r_2}$ and $y = \abs{r_1 - q_1} + \abs{r_2 - q_2}$, so
+	$$\abs{\abs{p_1 - r_1} + \abs{p_2 - r_2} + \abs{r_1 - q_1} + \abs{r_2 - q_2}} \leq \abs{\abs{p_1 - r_1} + \abs{p_2 - r_2}} + \abs{\abs{r_1 - q_1} + \abs{r_2 - q_2}}$$
+	\\
+	Thus, $A = \mbN, d(p,q) = \abs{p_1 - q_1} + \abs{p_2 - q_2}$ is a metric space.\\
+
+\eenu
+
+\newpage
+
+\item Let A={positive Integers} and B={all Integers}. Let d be defined by:
+$$d(p,q) = \abs{p^2 - q^2}.$$
+\benu
+\item Prove that A,d is a metric space.
+	\benu
+		\item Non-negativity\\
+		
+		$d(p,q) = \abs{p^2 - q^2} > 0$ when $p \neq q$.  This is true by properties of absolute values.
+		\\
+		\item Identity of Indiscernibles\\
+		\\
+		$d(p,p) = \abs{p^2 - p^2} = 0$
+		\\
+		\item Symmetry\\
+		\begin{align*}
+		d(p,q) &= \abs{p^2 - q^2} \\
+		       &= \abs{(p+q)(p-q)} \\
+		       &= \abs{(q+p)(q-p)} \\
+		       &= \abs{q^2 - p^2} \\
+		       &= d(q,p)
+		\end{align*}
+		
+		\item Triangle Inequality\\
+		\begin{align*}
+		d(p,q) &\leq d(p,r) + d(r,q)\\
+		\abs{p^2 - q^2} &\leq \abs{p^2 - r^2} + \abs{r^2 - q^2}\\
+		\end{align*}
+		
+		We will show for all real numbers that
+		$$\abs{x + y} \leq \abs{x} + \abs{y}$$		
+		\begin{align*}
+		\abs{x + y} &= (x + y)^2 \\
+		            &= x^2 +2xy +y^2 \\
+		            &= \abs{x}^2 +2xy + \abs{y}^2
+		\end{align*}
+		
+		But for any real number, $w$, $w \leq \abs{w}$; therefore
+		\begin{align*}
+		\abs{x + y}^2 &= \abs{x}^2 +2xy + \abs{y}^2 \\
+					&\leq \abs{x}^2 + 2\abs{x}\abs{y} + \abs{y}^2 \\
+					&= (\abs{x} + \abs{y})^2
+		\end{align*}
+		
+		Taking square roots, we get:
+		$$\abs{x + y} \leq \abs{x} + \abs{y}$$
+		Now we let $x = p^2 - r^2$ and $y = r^2 - q^2$, so
+		$$\abs{p^2 - q^2} \leq \abs{p^2 - r^2} + \abs{r^2 - q^2}$$
+		\\
+		Thus, $A = \mbN, d(p,q) = \abs{p^2 - q^2}$ is a metric space.\\
+	\eenu
+	
+\item Prove that $B,d$ is not a metric space.\\
+
+$B,d$ is not not a metric space since there exists negative numbers such that for $q = -p$, i.e. $p \neq q$, $d(p,-p) = 0$, which violates $d(p,q) > 0, p \neq q$
+
+
+\eenu
+
+\newpage
+
+\item Prove that $d((x_1 , y_1 ), (x_2 , y_2 )) = \abs{x_2 - x_1}$ is not a metric on $\mbR^2$.
+\\
+
+For $p = (x_1, y_1), q = (x_1, y_2), d(p,q) = 0$.  This violates the requirement that $d(p,q) > 0$ if $p \neq q$.
+
+\newpage
 
 
 \end{enumerate}
