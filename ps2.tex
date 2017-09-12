@@ -1,0 +1,203 @@
+\documentclass[12pt]{amsart}
+\setlength{\parskip}{.1in}
+\setlength{\parindent}{0cm}
+%myalterations
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[colorlinks=true,urlcolor=blue,pdfborder={0 0 .5}pdfnewwindow=true]{hyperref}
+\usepackage{enumitem}
+%\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{tabularx}
+%\usepackage{arydshln,leftidx,mathtools}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{booktabs}  % for tables
+
+%\setlength{\dashlinedash}{.4pt}
+%\setlength{\dashlinegap}{.8pt}
+%\usepackage{amsthm}
+\usepackage{verbatim}
+%\usepackage{commath}
+%My commands
+%environment abbreviations
+\newcommand{\benu}{\begin{enumerate}}
+\newcommand{\eenu}{\end{enumerate}}
+\newcommand{\bed}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{exercise}[theorem]{Exercise}
+\newcommand{\bex}{\begin{exercise}}
+\newcommand{\ex}{\end{exercise}}
+
+\newcommand{\pru}{{ \bfseries \textcolor{red}{Proof:} }}
+
+%symbol definitions
+\newcommand{\un}[1]{\underline{#1}}
+\newcommand{\mbZ}{\mathbb{Z}}
+\newcommand{\mbR}{\mathbb{R}}
+\newcommand{\mbN}{\mathbb{N}}
+\newcommand{\mbQ}{\mathbb{Q}}
+\newcommand{\mbC}{\mathbb{C}}
+\newcommand{\mbF}{\mathbb{F}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\hra}{\hookrightarrow}
+\newcommand{\tra}{\twoheadrightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\ep}{\epsilon}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bfs}[1]{{\bfseries #1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+%Operator definitions
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\cyc}{cyc}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\expo}{x}
+\DeclareMathOperator{\ord}{o}
+\DeclareMathOperator{\imm}{im}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\alt}{alt}
+\DeclareMathOperator{\irr}{irr}
+\DeclareMathOperator{\eqt}{Equiv}
+\DeclareMathOperator{\pat}{Part}
+%\DeclareMathOperator{\sgn}{sgn}
+%\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gl}{Gl}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\fixx}{Fix}
+\DeclareMathOperator{\suppp}{Supp}
+\DeclareMathOperator{\gl}{Gl}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\orb}{orb}
+\DeclareMathOperator{\ii}{I}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Co}{Co}
+\DeclareMathOperator{\md}{md}
+\DeclareMathOperator{\qt}{qt}
+\DeclareMathOperator{\ExtendedGCD}{ExtendedGCD}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\GCD}{GCD}
+\newcommand{\nms}{\negmedspace}
+\newcommand{\nts}{\negthinspace}
+
+\newcommand{\itep}{\item {\bfseries Problem}\ }
+\newcommand{\gen}[1]{\langle \nts#1 \nts\rangle}
+\newcommand{\quot}[2]{#1/ #2}
+\newcommand{\order}[1]{\left|<\nts #1 \nts s>\right|}
+
+%These next two commands are for making answers. 
+\newcommand{\beans}{\begin{description} \item[{ \bfseries \textcolor{red}{Answer}}]\ }
+\newcommand{\eans }{\end{description}}
+%\newcommand{\begin{comment}ex}{{ \bfseries \textcolor{red}{Answer}}}
+
+%To turn the answer into problem sets use replace to replace \begin{comment} with \begin{comment} and \\end{comment}  by \end{comment}.
+\newcommand{\lieb}[3][{{}}]{\frac{d^#1 #2}{d\,#3^#1}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\title{\textbf{Math 351 - Problem Set 2}}
+\author{Guy Matz}
+\date{\today}
+
+\begin{document} 
+
+\maketitle
+%\newpage % Q1
+
+\section{Metric Spaces}
+\begin{enumerate}[series=p]
+\setcounter{enumi}{3}
+\item
+	\benu
+		\item Define a metric on $\mbR$ by $d(p, q) = \abs{e^p - e^q}$. Find all of the points $p \in \mbR$ such that $d(p, 2) < 1$.
+		\item Using the metric in problem number 1, find the set of all points
+		$p = (p 1 , p 2 ) \in \mbR^2$ such that $d(p, O) \leq 1$, where $O = (0, 0)$. Sketch this set in $\mbR^2$ .
+	\eenu
+\newpage
+
+
+\item Let $X = C[0,1]=$ the set of real valued, continuous functions on [0,1].  Define 2 metrics on $X$ by $d_1(f(x), g(x)) = \int_{0}^{1} \abs{f (x) - g(x)}dx$ and
+$d_2(f(x), g(x)) =$ $\max\limits_{x \in [0,1]} |f(x) - g(x)|$. Let $f(x) = x$ and $g(x) = x^2$.
+Find $d_1(f(x), g(x))$, and $d_2(f(x), g(x))$.
+
+\newpage
+
+\item Make a table of the subsets of $\mbR^2$ below (using the standard metric on $\mbR^2$ ) where across the top you have the categories: “closed”, “open”, “isolated points”, “Limit Points”, and “bounded”, and along the left side you have the sets A through H. Identify all limit points and isolated points. Put “Y” or “N” for the rest.
+	\benu
+		\item $A = {(x, y)| x^2 + y^2 \leq 1}$
+		\item $B = {(x, y)| 0 < x^2 + y^2 \leq 1}$
+		\item $C = {(x, y)| 0 < x^2 + y^2 < 1}$
+		\item $D = {(x, y)|	\frac{1}{2}	< x^2 + y^2 < 1} \cup {(0,0)}$
+		\item $E = {(x, y)| 0 < x < 2, y = 1}$
+		\item $F = {(x, y)| 0 \leq x \leq 2, 0 \leq y \leq 1}$
+		\item $G = {(x, y)| 1 \leq x, 1 \leq y \leq 2}$
+		\item $H = {(0,0), (0,1), (1,0)}$
+	\eenu
+	
+	\begin{table}[h!]
+		\centering
+		\caption{Caption for the table.}
+		\label{tab:table1}
+		\begin{tabular}{c|c|c|c|c|c}
+			Subset & Closed & Open & Iso. pts. & Limit pts. & Bounded\\
+			\toprule
+			    A & &  &  & &\\ \hline
+			    B & &  &  & &\\ \hline
+			    C & &  &  & &\\ \hline
+			    D & &  &  & &\\ \hline
+			    E & &  &  & &\\ \hline
+			    F & &  &  & &\\ \hline
+			    G & &  &  & &\\ \hline
+			    H & &  &  & &\\
+			
+		\end{tabular}
+	\end{table}
+
+\newpage
+
+\item Prove the following (assume the standard metric on $\mbR$ and $\mbR^2$):
+	\benu
+		\item $(-2,2)$ is an open set in $\mbR$.
+		\item $[-2,2]$ is a closed set in $\mbR$.
+		\item $(-2,2]$ is neither an open set nor a closed set in $\mbR$.
+		\item Is $A = \{(x, y)| -2 < x < 2, y = 0\}$ open in $\mbR^2$? Prove your answer.
+	\eenu
+
+\newpage
+
+\item Let $A,B, C \subset X$, $d$ be non-empty open sets in a metric space $X$. Prove the
+following (without using the theorem that states that the union of open sets is open and the finite intersection of open sets is open).
+	\benu
+		\item $A \cup B \cup C$ is open in $X$
+		\item $A \cap B \cap C$ is open in $X$
+	\eenu
+\newpage
+
+
+\item Prove that If $X, d$ is a metric space and $E \subset F \subset X$, then $\overline{E}̅ \subset \overline{F}$.
+
+
+\newpage
+
+\end{enumerate}
+\end{document}
